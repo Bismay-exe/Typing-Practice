@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Typing Practice — Pro</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Chart.js for small charts in leaderboard -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Typing Practice</h1>
+      <p class="subtitle">Daily challenges • Practice modes • Achievements</p>
+    </div>
+
+    <div class="controls">
+      <label class="small">Mode
+        <select id="mode">
+          <option value="sentence" selected>Sentence</option>
+          <option value="word">Word</option>
+          <option value="code">Code</option>
+          <option value="quote">Quote</option>
+        </select>
+      </label>
+
+      <label class="small">Practice
+        <select id="practiceMode">
+          <option value="normal" selected>Normal</option>
+          <option value="zen">Zen</option>
+          <option value="speed">Speed (10s)</option>
+          <option value="accuracy">Accuracy (3 mistakes)</option>
+        </select>
+      </label>
+
+      <label class="small">Difficulty
+        <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </label>
+
+      <label class="small">Time
+        <select id="timeMode">
+          <option value="off" selected>Off</option>
+          <option value="30">30s</option>
+          <option value="60">60s</option>
+          <option value="120">120s</option>
+        </select>
+      </label>
+
+      <label class="small">Sound
+        <select id="soundTheme">
+          <option value="typewriter" selected>Typewriter</option>
+          <option value="mechanical">Mechanical</option>
+          <option value="silent">Silent</option>
+        </select>
+      </label>
+
+      <div class="goal-wrap">
+        <input id="goalInput" type="number" min="10" max="300" step="5" placeholder="WPM goal" />
+        <button id="saveGoalBtn" title="Save Goal">🎯</button>
+      </div>
+
+      <button id="reloadBtn" title="New Text">New</button>
+      <button id="challengeBtn" title="Random">🎲</button>
+      <button id="dailyBtn" title="Daily Challenge">📆</button>
+      <button id="ghostBtn" title="Ghost Replay">👻</button>
+
+      <button id="customBtn" title="Custom Lesson">➕ Custom</button>
+      <button id="scoreBtn" title="Leaderboard">🏆</button>
+    </div>
+  </header>
+
+  <section class="summary">
+    <div class="stats">
+      <div class="stat"><span id="accuracy">0%</span><small>Accuracy</small></div>
+      <div class="stat"><span id="wpm">0</span><small>WPM</small></div>
+      <div class="stat"><span id="streak">0</span><small>🔥 Streak</small></div>
+      <div class="stat timer"><span id="timer">—</span><small>Timer</small></div>
+    </div>
+
+    <div class="goal-progress">
+      <div class="goal-label">Goal: <span id="goalLabel">—</span> WPM</div>
+      <div class="goal-bar"><div id="goalBar"></div></div>
+    </div>
+  </section>
+
+  <main class="app">
+    <div class="card typing-card" id="typingCard">
+      <div class="text-display" id="textDisplay" aria-live="polite"></div>
+      <div id="ghostOverlay" class="ghost-overlay" aria-hidden="true"></div>
+
+      <textarea id="textInput" placeholder="Start typing here..." autocapitalize="off" autocomplete="off" spellcheck="false"></textarea>
+
+      <div class="progress-container">
+        <div id="progressBar"></div>
+      </div>
+
+      <div class="info-row">
+        <small id="modeInfo" class="muted">Mode: Sentence • Normal</small>
+      </div>
+    </div>
+
+    <!-- keyboard at bottom of main -->
+    <div class="keyboard" id="keyboard"></div>
+  </main>
+
+  <!-- Custom Lesson Modal -->
+  <div id="customModal" class="modal small">
+    <div class="modal-content">
+      <span class="close" data-close="customModal">&times;</span>
+      <h3>Custom Lesson</h3>
+      <textarea id="customText" placeholder="Paste your text or code here..." style="height:140px"></textarea>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+        <button id="useCustom">Use</button>
+        <button data-close="customModal">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaderboard & Achievements Modal -->
+  <div id="leaderboardModal" class="modal">
+    <div class="modal-content">
+      <span class="close" data-close="leaderboardModal">&times;</span>
+      <h2>🏆 Top Scores & Achievements</h2>
+
+      <section class="leaderboard-section">
+        <h4>Top Scores</h4>
+        <ul id="leaderboardList"></ul>
+      </section>
+
+      <section class="achievements-section">
+        <h4>Your Achievements</h4>
+        <div id="achievementsGrid" class="achievements-grid"></div>
+      </section>
+
+      <canvas id="wpmChart" width="380" height="200" style="margin-top:12px"></canvas>
+    </div>
+  </div>
+
+  <!-- Confetti container -->
+  <div id="confetti"></div>
+
+  <footer class="foot">
+    Made with ♡ — Pro features: Code mode, Quotes, Practice modes & custom lessons.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
