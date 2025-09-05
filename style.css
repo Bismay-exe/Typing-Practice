@@ -1,0 +1,106 @@
+:root{
+  --bg:#0b0b0b;
+  --panel:#0f0f0f;
+  --muted:#9e9e9e;
+  --accent:#ffffff;
+  --glass: rgba(255,255,255,0.03);
+  --glass-2: rgba(255,255,255,0.02);
+  --radius:14px;
+  --gap:14px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#000;color:var(--accent)}
+a{color:inherit}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px;flex-wrap:wrap}
+.brand h1{margin:0;font-size:22px}
+.brand .subtitle{margin:2px 0 0;color:var(--muted);font-size:12px}
+.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.controls .small{font-size:12px;color:var(--muted);display:flex;flex-direction:column}
+.controls select, .controls input, .controls button{background:var(--panel);border:1px solid rgba(255,255,255,0.04);color:var(--accent);padding:8px 10px;border-radius:8px;font-size:13px}
+.goal-wrap{display:flex;gap:8px;align-items:center}
+.goal-wrap input{width:96px;padding:8px 10px}
+
+/* summary */
+.summary{display:flex;align-items:center;justify-content:space-between;padding:8px 20px;gap:12px;flex-wrap:wrap}
+.stats{display:flex;gap:10px;flex-wrap:wrap}
+.stat{background:var(--glass);padding:8px 12px;border-radius:8px;text-align:center;min-width:80px}
+.stat span{display:block;font-weight:700;font-size:15px}
+.goal-progress{display:flex;gap:12px;align-items:center}
+.goal-label{color:var(--muted);font-size:13px}
+.goal-bar{width:220px;height:8px;background:var(--glass-2);border-radius:6px;overflow:hidden}
+#goalBar{height:100%;width:0;background:#4caf50;transition:width .25s ease}
+
+/* main card */
+.app{max-width:1000px;margin:20px auto;padding:18px;padding-bottom:120px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.03)}
+.typing-card{position:relative}
+.text-display{font-size:1.05rem;min-height:90px;padding:12px;white-space:pre-wrap;border-radius:8px}
+.text-display.code-mode{font-family:"Fira Code",monospace;background:rgba(255,255,255,0.01);padding:12px;border-radius:10px}
+.ghost-overlay{position:absolute;left:22px;right:22px;top:20px;pointer-events:none;color:#00e5ff66;font-family:monospace}
+
+/* textarea */
+#textInput{width:100%;height:120px;margin-top:12px;resize:none;border-radius:8px;padding:10px;background:var(--panel);border:1px solid rgba(255,255,255,0.04);color:var(--accent);font-size:14px;outline:none}
+
+/* progress */
+.progress-container{width:100%;height:6px;background:var(--glass-2);border-radius:4px;margin-top:12px;overflow:hidden}
+#progressBar{width:0;height:100%;background:#4caf50;transition:width .2s ease}
+
+/* info row */
+.info-row{display:flex;justify-content:space-between;margin-top:10px}
+.small{font-size:12px;color:var(--muted)}
+
+/* keyboard (in page bottom near content) */
+.keyboard {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+  gap:6px;
+  margin-top:10px; /* small spacing above only */
+}
+.key-row{display:flex;gap:6px}
+.key{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:var(--glass-2);border:1px solid rgba(255,255,255,0.06);font-size:13px;transition:transform .12s}
+.key.active{background:#fff;color:#000;transform:scale(1.06)}
+.key.wide{width:100px}
+
+/* modal */
+.modal{display:none;position:fixed;z-index:50;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px)}
+.modal.small .modal-content{width:640px;max-width:94%}
+.modal .modal-content{background:var(--panel);margin:6% auto;padding:16px;border-radius:12px;width:760px;color:var(--accent)}
+.close{float:right;font-size:18px;cursor:pointer;color:var(--muted)}
+.leaderboard-section ul{list-style:none;padding:0;margin:8px 0}
+.leaderboard-section li{background:rgba(255,255,255,0.02);padding:8px;border-radius:8px;margin-bottom:6px}
+
+/* achievements */
+.achievements-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.badge{background:rgba(255,255,255,0.02);padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);min-width:110px;text-align:center}
+.badge.locked{opacity:0.35;filter:grayscale(70%)}
+
+/* confetti small */
+#confetti{position:fixed;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:60;overflow:hidden}
+
+/* small utilities */
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.foot{color:var(--muted);text-align:center;padding:8px 0;}
+
+/* highlights */
+.correct{color:#4caf50}
+.incorrect{color:#f44336}
+.pending{color:#c8c8c8}
+.cursor{border-left:2px solid #fff;animation:blink 1s step-start infinite}
+@keyframes blink{50%{border-color:transparent}}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(0.9); }
+  50%  { transform: scale(1.05); }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+button.bounce {
+  animation: bounce 0.35s ease;
+}
