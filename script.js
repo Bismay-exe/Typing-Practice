@@ -71,12 +71,12 @@ if (!achievements) achievements = {};
 // ==== Sounds (base64 tiny) ====
 const sounds = {
   typewriter: {
-    key: new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA='),
-    error: new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=')
+    key: new Audio('sounds/typewriter-key.wav'),
+    error: new Audio('sounds/error.wav')
   },
   mechanical: {
-    key: new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA='),
-    error: new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=')
+    key: new Audio('sounds/mechanical-key.wav'),
+    error: new Audio('sounds/error.wav')
   },
   silent: {
     key: { play: ()=>{} },
