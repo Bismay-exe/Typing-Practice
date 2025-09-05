@@ -85,12 +85,12 @@ Progress tracking + Goals 🎯
 
 <p align="center">
   <a href="https://bismay-exe.github.io/Typing-Practice/">
-    <img src="assets/screenshots/banner.png" width="700px" alt="Typing Practice Pro" />
+    <img src="assets/screenshots/main.png" width="700px" alt="Typing Practice" />
   </a>
 </p>
 
 <p align="center">
-  <b>Typing Practice Pro</b><br>
+  <b>Typing Practice</b><br>
   Daily challenges • Ghost replay • Achievements • Leaderboard • Glassy UI
 </p>
 
